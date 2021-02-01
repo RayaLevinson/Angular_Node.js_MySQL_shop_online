@@ -1,0 +1,33 @@
+<div *ngIf="!shoppingButtonClicked" class="row">
+  <div class="col-md-4">
+    <div class="card card-main-screen border-success mx-auto mb-3">
+      <div class="mt-5 px-3">
+        <button (click)="onStartShoppingClicked()" class="btn btn-success btn-block py-3">{{ startOrResumeButtonName }}</button>  
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <about></about>
+  </div>
+  <div class="col-md-4">
+    <div class="card card-main-screen border-success mx-auto mb-3">
+      <div class="mt-4 px-3">
+        <h4 class="text-success mb-5">Hello {{ userFirstName$ | async}}.</h4>
+        <div class="my-5 py-5">
+          <h4>{{ message }}</h4>
+          <div *ngIf="lastCartDate">
+            <h5><span>{{lastCartDate | date}}.</span></h5>
+            <p>Total price of the cart is: {{totalPrice$ | async | currency:"ILS" }}</p>
+          </div>
+          <div *ngIf="lastOrderDate">
+            <h5><span>{{lastOrderDate | date}}.</span></h5>
+          </div>
+        </div>
+        <h4 class="text-success">{{ finalMsg }}</h4>
+      </div>
+    </div>    
+  </div>
+</div>
+<ng-container *ngIf="shoppingButtonClicked">
+  <shopping-home></shopping-home>
+</ng-container>

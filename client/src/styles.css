@@ -1,0 +1,27 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+button:disabled:hover {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.card-main-screen {
+  min-height: 432px;
+}
+
+.my-container {
+  padding-right: 4rem;
+  padding-left: 4rem;
+}
+.my-btn-light {
+  background-color: #eee;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .my-container {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}

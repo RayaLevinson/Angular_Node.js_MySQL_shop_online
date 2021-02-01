@@ -1,0 +1,6 @@
+{
+  "/projects/200/shop/api/*": {
+    "target": "http://localhost:5000",
+    "secure": false
+  }
+}

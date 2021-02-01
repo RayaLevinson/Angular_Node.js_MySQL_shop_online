@@ -1,0 +1,145 @@
+<div *ngIf="error" class="container row col-sm-12 col-md-8 col-lg-6 mx-auto alert alert-danger">
+  {{ error }}
+</div>
+<div class="container row col-sm-12 col-md-8 col-lg-6 mx-auto alert alert-danger" *ngIf="
+  registerForm.get('password').touched && 
+  registerForm.get('confirmPassword').touched &&
+  registerForm.errors
+  "
+>
+  <p *ngIf="registerForm.errors.passwordsDontMatch">
+    Password and Password Confirmation should match
+  </p>
+</div>
+
+<div class="row mx-3 my-5">
+  <div class="card col-sm-12 col-md-8 col-lg-6 mx-auto mb-5">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+        <h1 class="text-center text-success mb-3"><i class="fas fa-user-plus"></i>  Register</h1>
+        <h5 class="text-center mb-3">Create Your Account</h5>
+
+        <ng-container *ngIf="activeStepIndex === 1">
+          <app-input
+            inputType="text"
+            label="ID *"
+            [control]="registerForm.get('id')"
+          >
+          </app-input>
+
+          <app-input
+            inputType="text"
+            label="Email Address *"
+            [control]="registerForm.get('email')"
+          >
+          </app-input>
+
+          <app-input
+            inputType="password"
+            label="Password *"
+            [control]="registerForm.get('password')"
+          >
+          </app-input>
+
+          <app-input
+            inputType="password"
+            label="Confirm Password *"
+            [control]="registerForm.get('confirmPassword')"
+          >
+          </app-input>
+
+          <div class="d-flex justify-content-end">
+            <button 
+              class="btn btn-success"
+              (click)="onNextBtnClick()"
+              [disabled]="registerForm.get('id').errors ||
+                          registerForm.get('email').errors || 
+                          registerForm.get('password').errors || 
+                          registerForm.get('confirmPassword').errors ||
+                          registerForm.errors?.passwordsDontMatch" 
+              type="button">Next <i class="fas fa-arrow-right"></i>          
+            </button>           
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="activeStepIndex === 2">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <app-input
+                inputType="text"
+                label="First Name *"
+                [control]="registerForm.get('firstName')"
+              >
+              </app-input>
+            </div>
+            
+            <div class="form-group col-md-6">
+              <app-input
+                inputType="text"
+                label="Last Name *"
+                [control]="registerForm.get('lastName')"
+              >
+              </app-input>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>City *</label>
+            <select (change)="onChangeCity($event)" class="form-control">
+              <option value="">Select City</option>
+              <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+            </select>
+          </div>
+
+          <app-input
+            inputType="text"
+            label="Street *"
+            [control]="registerForm.get('street')"
+          >
+          </app-input>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <app-input
+                inputType="text"
+                label="House *"
+                [control]="registerForm.get('house')"
+              >
+              </app-input>
+            </div>
+            
+            <div class="form-group col-md-6">
+              <app-input
+                inputType="number"
+                label="Apartment *"
+                [control]="registerForm.get('apartment')"
+              >
+              </app-input>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button 
+              class="btn btn-success"
+              (click)="onPrevBtnClick()"            
+              type="submit"> <i class="fas fa-arrow-left"></i> Previous
+            </button>           
+
+            <button 
+              class="btn btn-success"
+              [disabled]="registerForm.invalid"
+              type="submit">Register
+            </button> 
+          </div>         
+        </ng-container>
+
+        <div *ngIf="isLoading && !error">
+          <loader></loader>
+        </div>
+      </form>      
+      <p class="lead mt-4">Have An Account? 
+        <a routerLink="/">Login</a>
+      </p>
+    </div>
+  </div>        
+</div>

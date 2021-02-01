@@ -1,0 +1,13 @@
+export const ID_MIN_LENGTH: number = 5;
+export const ID_MAX_LENGTH: number = 20;
+export const PASSWORD_MIN_LENGTH: number = 6;
+export const PASSWORD_MAX_LENGTH: number = 70;
+export const EMAIL_REGEX: RegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+export const STREET_MIN_LENGTH: number = 2;
+export const STREET_MAX_LENGTH: number = 25;
+export const HOUSE_MIN_LENGTH: number = 1;
+export const HOUSE_MAX_LENGTH: number = 15;
+export const FIRST_NAME_MIN_LENGTH: number = 2;
+export const FIRST_NAME_MAX_LENGTH: number = 20;
+export const LAST_NAME_MIN_LENGTH: number = 2;
+export const LAST_NAME_MAX_LENGTH: number = 20;

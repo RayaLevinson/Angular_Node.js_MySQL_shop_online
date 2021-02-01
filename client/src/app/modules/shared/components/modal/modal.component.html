@@ -1,0 +1,23 @@
+<div (click)="onCloseClick()" class="my-modal">
+  <div (click)="$event.stopPropagation()">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="d-flex justify-content-end">
+        <span (click)="onCloseClick()" class="close">&times;</span>
+      </div>
+      
+      <form [formGroup]="updateCartForm" (ngSubmit)="onSubmit()">
+        <app-input
+          inputType="number"
+          label="Enter Quantity *"
+          [control]="updateCartForm.get('quantity')"
+          value=1
+        >
+        </app-input>
+        <div class="text-center">
+          <button [disabled]="updateCartForm.invalid" type="submit" class="btn btn-success my-2">Update Cart</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

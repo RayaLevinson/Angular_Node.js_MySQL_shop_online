@@ -1,0 +1,15 @@
+{
+  "host": "localhost",
+  "port": 3306,
+  "dbName": "shop_200",
+  "username": "shop_user45581hfg",
+  "password": "s78o154meL43232hd",
+  "uploadsFolder": "upload",
+  "sess_name": "sid_200455",
+  "sess_secret": "vE8RYV4578hghharsgjhghjghj",
+  "baseUrl": "/projects/200/shop"
+}
+
+
+
+

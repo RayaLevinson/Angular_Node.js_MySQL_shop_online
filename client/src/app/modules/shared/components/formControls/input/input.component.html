@@ -1,0 +1,42 @@
+<div class="form-group">
+  <label>{{ label }}</label>
+  <input 
+    [type]="inputType" 
+    [formControl]="control" 
+    [ngClass]="{'is-invalid': control.errors && control.touched}"
+    class="form-control"
+    (dblclick)="onDoubleClick()"
+  />
+  <div *ngIf="showErrors()" class="invalid-feedback">
+    <p *ngIf="control.errors.required">
+      Value is required
+    </p>
+    <p *ngIf="control.errors.minlength">
+      Value should contain at least {{ control.errors.minlength.requiredLength }} characters.
+    </p>
+    <p *ngIf="control.errors.maxlength">
+      Value should be no longer than {{ control.errors.maxlength.requiredLength }} characters.
+    </p>
+    <p *ngIf="control.errors.min">
+      Value should be least {{ control.errors.min.min }}.
+    </p>
+    <p *ngIf="control.errors.pattern">
+      Invalid format
+    </p>
+    <p *ngIf="control.errors.nonUniqueUsername">
+      Email was already registered
+    </p>
+    <p *ngIf="control.errors.nonUniqueId">
+      Id was already registered
+    </p>
+    <p *ngIf="control.errors.dateIsInPast">
+      Please insert a valid date
+    </p>
+    <p *ngIf="control.errors.shippingIsNotAvailable">
+      Please choose a different date. This day is full.
+    </p>
+    <p *ngIf="control.errors.someError">
+      Something went wrong. Please try again later.
+    </p>
+  </div>
+</div>

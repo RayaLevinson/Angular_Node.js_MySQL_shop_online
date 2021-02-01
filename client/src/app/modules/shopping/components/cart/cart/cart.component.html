@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between mb-2">
+  <h3 class="text-success"><i class="fas fa-shopping-cart"> Cart</i></h3>  
+  <button *ngIf="!isCartEditable" class="btn btn-light my-btn-light" (click)="onBackToShopClicked()">Back to Shopping</button>
+</div>
+
+<div *ngIf="!isCartEditable">
+  <form class="form-row my-2 p-1">
+    <input type="text" 
+      name="productToSearch"
+      [(ngModel)]="productToSearch"
+      placeholder="Search by product name"
+      class="form-control"
+      (keyup)="onKey($event)"
+    >     
+  </form>
+</div>
+
+<ul *ngIf="(cartItems$ | async) as cartItems" class="list-group">
+  <ng-container *ngFor="let item of cartItems"
+  >
+    <cart-item
+      [item]="item"
+      [isCartEditable]="isCartEditable"
+      [productToSearch]="productToSearch"
+    ></cart-item>
+  </ng-container>
+</ul>
+<div class="mt-2">
+  <p>Cart Total Price: {{ totalPrice$ | async | currency:"ILS"}}</p>
+  <div *ngIf="isCartEditable"> 
+    <hr> 
+  </div>
+</div>
+<div *ngIf="isCartEditable" class="d-flex justify-content-between mt-3">
+  <div>
+    <a [class.disabled]="!(cartItemsNum$ | async)" class="btn btn-success" routerLink="../order">Order</a>
+  </div>
+  <div>
+    <button class="btn btn-light my-btn-light" [class.disabled]="!(cartItemsNum$ | async)" (click)="onClearCart()">Clear Cart</button>  
+  </div>
+</div>

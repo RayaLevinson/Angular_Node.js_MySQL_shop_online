@@ -1,0 +1,24 @@
+<form class="form-row mt-2 p-1">
+  <div class="col-11">
+    <input type="text" 
+      name="productName"
+      [(ngModel)]="productName"
+      placeholder="Search by product name"
+      class="form-control"
+    > 
+  </div>
+  <div class="col-1">
+    <button (click)="searchProduct()" class="btn btn-success btn-block"><i class="fas fa-search"></i></button>
+  </div>
+</form>
+
+<div *ngIf="(products$ | async) as products" class="row my-4">
+  <div *ngFor="let product of products" class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-3 mb-2">
+    <product-item       
+      [product]="product"
+      [showShoppingActions]=true
+      [changeQuantityFunc]="changeQuantity"
+    >
+    </product-item>
+  </div>
+</div>

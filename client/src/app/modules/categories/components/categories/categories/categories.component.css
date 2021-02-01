@@ -1,0 +1,12 @@
+.list-group-item {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  width: 150px;
+  border: 1px solid #00000020 !important;
+  border-radius: 0 !important;
+  cursor: pointer;
+}
+.list-group-item.active {
+  background-color: #28a745;  
+  border-color: #28a745;
+}

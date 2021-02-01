@@ -1,0 +1,40 @@
+<div *ngIf="error" class="mx-auto alert alert-danger">
+  {{ error }}
+</div>
+
+<div class="card card-main-screen border-success mx-auto mb-3">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+      <h1 class="text-center text-success mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
+      <h5 class="text-center mb-3">Login into Your Account</h5>
+
+      <app-input
+        inputType="text"
+        label="Email Address *"
+        [control]="loginForm.get('email')"
+      >
+      </app-input>
+
+      <app-input
+        inputType="password"
+        label="Password *"
+        [control]="loginForm.get('password')"
+      >
+      </app-input>
+
+      <button 
+        class="btn btn-success btn-block"
+        [disabled]="loginForm.invalid"
+        type="submit">Login
+      </button>
+
+      <div *ngIf="isLoading && !error">
+        <loader></loader>
+      </div>
+
+    </form>      
+    <p class="lead mt-4">No account?
+      <a routerLink="/register">Register</a>
+    </p>
+  </div>
+</div>      

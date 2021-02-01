@@ -1,0 +1,61 @@
+<div *ngIf="error" class="mx-auto alert alert-danger">
+  {{ error }}
+</div>
+<div class="text-center text-success">
+  <h2>Order</h2>
+</div>
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <h5>Shipping Details</h5>
+  <small>Double click on house / street / apartment field to get your address filled.</small>
+  <hr>
+  <div class="form-group">
+    <label>City *</label>
+    <select (change)="onChangeCity($event)" class="form-control">
+      <option value="">Select City</option>
+      <option *ngFor="let city of cities" [value]="city.name">{{ city.name }}</option>
+    </select>
+  </div>
+
+  <app-input
+    inputType="text"
+    label="Street *"
+    [control]="orderForm.get('street')"
+  >
+  </app-input>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <app-input
+        inputType="text"
+        label="House *"
+        [control]="orderForm.get('house')"
+      >
+      </app-input>
+    </div>
+    
+    <div class="form-group col-md-6">
+      <app-input
+        inputType="number"
+        label="Apartment *"
+        [control]="orderForm.get('apartment')"
+      >
+      </app-input>
+    </div>
+  </div>  
+
+  <app-input
+    inputType="date"
+    label="Shipping Date *"
+    [control]="orderForm.get('dateToShip')"
+  >
+  </app-input>
+
+  <h5>Payments</h5>
+  <hr>
+  <app-input 
+    label="Credit Card *" 
+    [control]="orderForm.get('creaditCard')"
+  ></app-input>
+  <button [disabled]="orderForm.invalid" class="btn btn-success btn-block" type="submit">Order <i class="fas fa-exclamation"></i></button> 
+</form>
+

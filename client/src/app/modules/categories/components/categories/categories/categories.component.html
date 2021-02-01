@@ -1,0 +1,19 @@
+<div class="bg-light row mx-auto">
+  <div class="card card-body">
+    <div *ngIf="categories$ | async">
+      <div 
+        class="list-group list-group-horizontal-md"        
+      >
+        <a 
+          *ngFor="let category of (categories$ | async)"
+          [routerLink]="['.']"
+          [queryParams]="{ category: category.id }"          
+          class="list-group-item list-group-item-action flex-fill"
+          [class.active]="category.id === categoryId"
+        >
+          {{ category.name}}      
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

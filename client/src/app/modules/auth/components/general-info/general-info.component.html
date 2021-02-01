@@ -1,0 +1,17 @@
+<div *ngIf="error" class="mx-auto alert alert-danger">
+  {{ error }}
+</div>
+<div *ngIf="!(isLoggedIn$ | async)" class="card card-main-screen border-success mx-auto mb-3">  
+  <div class="card-body">
+    <h3 class="card-text text-success">
+      Available Products
+    </h3>
+    <h3 class="card-text text-success">
+      in our store: {{ numOfProducts }}
+    </h3>
+  </div>
+  <img [style.max-height.rem]="15" class="img-fluid" src="assets/images/shopping-2825247_640_pixabay.png" alt="Shop">
+  <div class="card-footer bg-transparent border-success">
+   Number of orders were done in our store: {{ numOfOrders }}
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand navbar-light bg-light mb-4">
+  <div class="container-fluid">
+    <a routerLink="/" class="navbar-brand">
+        <p>{{ projectName }}</p>
+        <p class="my-small">Contact: <i class="fas fa-phone-alt"></i> {{ phone }} <i class="fas fa-envelope"></i> {{ email}}</p>
+    </a>
+    <div>
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="!(isLoggedIn$ | async)" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/" class="nav-link">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </li>
+        <li *ngIf="!(isLoggedIn$ | async)" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/register" class="nav-link">
+            <i class="fas fa-user-plus"></i>
+            <span>Register</span>          
+          </a>
+        </li>
+
+        <li *ngIf="isLoggedIn$ | async" class="nav-item nav-link">
+          <a>Hello {{ userFirstName$ | async }}</a>          
+        </li>
+        <li *ngIf="isLoggedIn$ | async" class="nav-item">
+          <a href="#" (click)="onLogout()" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>                      
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>  
+</nav>

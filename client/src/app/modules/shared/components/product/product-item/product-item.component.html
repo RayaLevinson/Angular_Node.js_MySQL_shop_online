@@ -1,0 +1,16 @@
+<div class="card card-item" (click)="onEditProduct(product)">
+  <img [src]="product.imagePath" class="card-img-top img-fluid rounded-circle" alt="Product">
+  <div class="card-body card-body-item text-center">
+    <p>{{ product.name }}</p>
+    <p>{{ product.price | currency:"ILS" }}</p>
+  </div>
+  
+  <div *ngIf="showShoppingActions" class="card-footer">
+    <button (click)="onModalClick()" class="btn btn-success btn-block">Add to Cart</button>
+    <modal 
+      (closeModal)="onModalClick()"
+      (updatedQuantityEvent)="quanityChanged($event)"
+      *ngIf="modalOpen">
+    </modal>
+  </div>
+</div>

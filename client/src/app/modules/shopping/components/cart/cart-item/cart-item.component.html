@@ -1,0 +1,15 @@
+<li class="list-group-item list-group-item-action d-flex">
+  <div>
+    <img src="{{myDomain}}{{baseUrl}}/{{item.imagePath}}" class="cart-img img-fluid rounded-circle" alt="{{ item.name }}"/>
+  </div>
+  <div class="d-flex flex-column flex-grow-1 ml-2"> 
+    <p [style.background-color]="(productToSearch !== '') && item.name.toLowerCase().includes(productToSearch.toLowerCase()) ? 'yellow' : ''" >{{ item.name }}</p>
+    <p>{{ item.quantity }} units </p>
+  </div>
+  <div class="d-flex flex-column">
+    <p>{{ item.itemPrice | currency:"ILS" }}</p>    
+    <span *ngIf="isCartEditable" (click)="onDelete(item)" class="text-right">
+      <i class="fas fa-trash"></i>
+    </span>
+  </div>
+</li>
